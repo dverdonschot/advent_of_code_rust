@@ -3,7 +3,7 @@ use std::io::{self, BufRead, BufReader};
 
 
 #[derive(Debug)]
-pub enum OppOptions {
+pub enum Opponent {
     A,
     B,
     C,
@@ -11,7 +11,7 @@ pub enum OppOptions {
 }
 
 #[derive(Debug)]
-pub enum MeOptions {
+pub enum Player {
     X,
     Y,
     Z,
@@ -25,73 +25,73 @@ pub fn read_file_contents(file_path: &str) -> Result<impl Iterator<Item = io::Re
     Ok(reader.lines())
 }
 
-pub fn game_score(opp: &OppOptions , me: &MeOptions) -> i32 {
+pub fn game_score(opp: &Opponent , me: &Player) -> i32 {
     let mut score_points: i32 = 0;
 
     match me {
-        MeOptions::X => {
+        Player::X => {
             score_points += 1;
             match opp {
-                OppOptions::A => score_points += 3,
-                OppOptions::B => score_points += 0,
-                OppOptions::C => score_points += 6,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 3,
+                Opponent::B => score_points += 0,
+                Opponent::C => score_points += 6,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::Y => {
+        Player::Y => {
             score_points += 2;
             match opp {
-                OppOptions::A => score_points += 6,
-                OppOptions::B => score_points += 3,
-                OppOptions::C => score_points += 0,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 6,
+                Opponent::B => score_points += 3,
+                Opponent::C => score_points += 0,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::Z => {
+        Player::Z => {
             score_points += 3;
             match opp {
-                OppOptions::A => score_points += 0,
-                OppOptions::B => score_points += 6,
-                OppOptions::C => score_points += 3,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 0,
+                Opponent::B => score_points += 6,
+                Opponent::C => score_points += 3,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::None => score_points += 0,
+        Player::None => score_points += 0,
     }
 
     score_points
 
 }
 
-pub fn game_score_fixed(opp: &OppOptions , me: &MeOptions) -> i32 {
+pub fn game_score_fixed(opp: &Opponent , me: &Player) -> i32 {
     let mut score_points: i32 = 0;
 
     match me {
-        MeOptions::X => {
+        Player::X => {
             match opp {
-                OppOptions::A => score_points += 3,
-                OppOptions::B => score_points += 1,
-                OppOptions::C => score_points += 2,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 3,
+                Opponent::B => score_points += 1,
+                Opponent::C => score_points += 2,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::Y => {
+        Player::Y => {
             match opp {
-                OppOptions::A => score_points += 4,
-                OppOptions::B => score_points += 5,
-                OppOptions::C => score_points += 6,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 4,
+                Opponent::B => score_points += 5,
+                Opponent::C => score_points += 6,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::Z => {
+        Player::Z => {
             match opp {
-                OppOptions::A => score_points += 8,
-                OppOptions::B => score_points += 9,
-                OppOptions::C => score_points += 7,
-                OppOptions::None => score_points += 0,
+                Opponent::A => score_points += 8,
+                Opponent::B => score_points += 9,
+                Opponent::C => score_points += 7,
+                Opponent::None => score_points += 0,
             }
         }
-        MeOptions::None => score_points += 0,
+        Player::None => score_points += 0,
     }
 
     score_points

@@ -1,9 +1,9 @@
 
-use rock_paper_scissors::{MeOptions, OppOptions};
+use rock_paper_scissors::{Player, Opponent};
 
 
 fn main() {
-    let mut moves: Vec<(&OppOptions, &MeOptions)>;
+    let mut moves: Vec<(&Opponent, &Player)>;
     moves = vec![];
     let mut total_score: i32 = 0;
     let mut total_score_fixed: i32 = 0;
@@ -14,19 +14,19 @@ fn main() {
                 match line {
                     Ok(content) => {
                         let (opp, me) = content.split_once(' ').unwrap();
-                        let opp_enum: &OppOptions;
-                        let me_enum: &MeOptions;
+                        let opp_enum: &Opponent;
+                        let me_enum: &Player;
                         match opp {
-                            "A" => opp_enum = &OppOptions::A,
-                            "B" => opp_enum = &OppOptions::B,
-                            "C" => opp_enum = &OppOptions::C,
-                            _ => opp_enum = &OppOptions::None,
+                            "A" => opp_enum = &Opponent::A,
+                            "B" => opp_enum = &Opponent::B,
+                            "C" => opp_enum = &Opponent::C,
+                            _ => opp_enum = &Opponent::None,
                         }
                         match me {
-                            "X" => me_enum = &MeOptions::X,
-                            "Y" => me_enum = &MeOptions::Y,
-                            "Z" => me_enum = &MeOptions::Z,
-                            _ => me_enum = &MeOptions::None,
+                            "X" => me_enum = &Player::X,
+                            "Y" => me_enum = &Player::Y,
+                            "Z" => me_enum = &Player::Z,
+                            _ => me_enum = &Player::None,
                         }
                         
                         moves.push((
