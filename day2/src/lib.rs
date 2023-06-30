@@ -97,28 +97,3 @@ pub fn game_score_fixed(opp: &Opponent , me: &Player) -> i32 {
     score_points
 
 }
-
-
-
-
-/*
-fn parse_list(content: &str) -> Vec<Vec<i32>> {
-    let chunked_content: Vec<&str> = content.trim().split("\n\n").collect();
-
-    let chunked_numbers: Vec<Vec<i32>> = chunked_content
-        .iter()
-        .map(|chunk| {
-            let numbers: Vec<i32> = chunk
-                .split("\n")
-                .map(|entry| {
-                    let out: i32 = entry.parse().unwrap();
-                    out
-                })
-                .collect();
-            numbers
-        })
-        .collect();
-
-    chunked_numbers
-}
-*/
