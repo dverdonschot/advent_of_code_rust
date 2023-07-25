@@ -1,5 +1,5 @@
 use day3::{
-    char_to_enum, compare_both_halves, compare_three_lines, priorities_scores, read_file_contents,
+    char_to_enum, compare_both_halves, find_common_chars, priorities_scores, read_file_contents,
     split_string_in_half,
 };
 
@@ -27,12 +27,12 @@ fn main() {
                         one_to_three += 1;
                         team_vec.push(content);
                         if one_to_three == 3 {
-                            let team_char = compare_three_lines(
-                                team_vec[1].as_str(),
+                            let common_char = find_common_chars(
+                                team_vec[0].as_str(),
                                 team_vec[1].as_str(),
                                 team_vec[2].as_str(),
                             );
-                            let team_score = priorities_scores(char_to_enum(team_char));
+                            let team_score = priorities_scores(char_to_enum(common_char[0]));
                             task2_total_teams_score += team_score;
                             team_vec.pop();
                             team_vec.pop();

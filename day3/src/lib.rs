@@ -93,37 +93,20 @@ pub fn compare_both_halves(first_half: &str, second_half: &str) -> char {
     duplicate_char
 }
 
-pub fn compare_three_lines(line1: &str, line2: &str, line3: &str) -> char {
-    let three_lines_vec: Vec<&str> = vec![line1, line2, line3];
-    let chars_line2: Vec<Vec<char>> = three_lines_vec
-        .iter()
-        .skip(1)
-        .map(|set| set.chars().collect::<Vec<_>>())
-        .collect();
-    let chars_line3: Vec<Vec<char>> = three_lines_vec
-        .iter()
-        .skip(2)
-        .map(|set| set.chars().collect::<Vec<_>>())
-        .collect();
-    let duplicate_char_line2 = three_lines_vec[0]
-        .chars()
-        .find(|compare| chars_line2.iter().all(|set2| set2.contains(compare)))
-        .expect(
-            "No duplicates found", //format!("No Duplicates are found in: {:?}", both_halves.as_str());
-        );
-    let duplicate_char_line3 = three_lines_vec[0]
-        .chars()
-        .find(|compare| chars_line3.iter().all(|set3| set3.contains(compare)))
-        .expect(
-            "No duplicates found", //format!("No Duplicates are found in: {:?}", both_halves.as_str());
-        );
-    if duplicate_char_line2 == duplicate_char_line3 {
-        duplicate_char_line2
-    } else {
-        println!("something went wrong!");
-        '-'
-    }
+pub fn find_common_chars(s1: &str, s2: &str, s3: &str) -> Vec<char> {
+    let set1: std::collections::HashSet<_> = s1.chars().collect();
+    let set2: std::collections::HashSet<_> = s2.chars().collect();
+    let set3: std::collections::HashSet<_> = s3.chars().collect();
+
+    let common_chars = set1
+        .intersection(&set2)
+        .filter(|&ch| set3.contains(ch))
+        .cloned()
+        .collect::<Vec<_>>();
+
+    common_chars
 }
+
 pub fn char_to_enum(duplicate_char: char) -> Priorities {
     match duplicate_char {
         'a' => Priorities::a,

@@ -16,6 +16,7 @@ Part 2 was created on the Kho Shipping Lines Boat trip from Iligan City to Siquj
 Got the char matching code from stack overflow:
 https://stackoverflow.com/questions/52882267/how-to-find-if-two-strings-have-common-characters-in-rust
 
-Googled a lot for other problems / solutions, but in the end brewed the code myself.
+Comparing 3 strings was hard, first I used the compare function I build for task 1, but it kept giving me wrong results.
+In the end I asked chatgpt for a function that could compare 3 strings.
 
 Cool challenge, finally had the feeling that I was coding myself in Rust!
